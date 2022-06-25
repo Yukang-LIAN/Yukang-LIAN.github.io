@@ -22,8 +22,12 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252219330.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252304468.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260016998.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252341784.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260040076.png">
 <meta property="article:published_time" content="2022-06-25T02:18:53.000Z">
-<meta property="article:modified_time" content="2022-06-25T14:32:16.392Z">
+<meta property="article:modified_time" content="2022-06-25T16:53:23.482Z">
 <meta property="article:author" content="Yukang-LIAN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
@@ -219,9 +223,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add [filename]</span><br></pre></td></tr></table></figure>
 <p>add操作会将所有未存储的文件以blob的形式存起来，存储的对象别忘了要先实例化,即</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Commit</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
-<p>除此之外，所有<code>static</code>标签标记的变量都不会被存储，所以声明变量时不要加<code>static</code>。以下是我的commit和blob的实例变量。<strong>仅供参考</strong></p>
+<p>注意，所有<code>static</code>标签标记的变量都不会被存储，所以声明变量时不要加<code>static</code>。</p>
+<p>除此之外，所有存储起来的文件名以及对应的blobID都要写入到addstage中，以便于下次commit的时候读取。以下是我的commit、blob以及stage的实例变量。<strong>仅供参考</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  commit object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Map&lt;String, String&gt; pathToBlobID = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; parents;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Date currentTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File commitSaveFileName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String timeStamp;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  blob object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">byte</span>[] bytes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File fileName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String filePath;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File blobSaveFileName;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  stage object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> Map&lt;String, String&gt; pathToBlobID = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 <p><strong>失败的情况</strong>：如果文件不存在，输出<code>File does not exist.</code></p>
 <h3 id="commit">commit</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit [message]</span><br></pre></td></tr></table></figure>
@@ -256,7 +262,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">global-log</span><br></pre></td></tr></table></figure>
 <p>打印所有的commit而不关心顺序，只需要读取objects文件夹中的所有commit，打印出来就好，以下函数功能是返回所有objects文件夹中commit，是以List形式存储的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; commitList = Utiles.plainFilenamesIn(OBJECT_DIR);</span><br></pre></td></tr></table></figure>
-<p>其中的OBJECT_DIR是是我自定义的，定义如下，这都可以从lab6中学到，大伙不要傻傻的抄过去发现报错了不知道哪里的问题😂。</p>
+<p>其中的OBJECT_DIR是是我自定义的，定义如下，这都可以从Lab6中学到，大伙不要傻傻的抄过去发现报错了不知道哪里的问题😂。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">File</span> <span class="variable">GITLET_DIR</span> <span class="operator">=</span> join(CWD, <span class="string">&quot;.gitlet&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">File</span> <span class="variable">OBJECT_DIR</span> <span class="operator">=</span> join(GITLET_DIR, <span class="string">&quot;objects&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p><strong>失败的情况</strong>：无</p>
 <h3 id="find">find</h3>
@@ -264,11 +270,109 @@
 <p>打印所有与输入message相同的commit的ID，与上面思路类似，先读取所有的commit，找到符合的，打印出ID即可，如果有多个结果，一行一个。</p>
 <p><strong>失败的情况</strong>：无</p>
 <h3 id="status">status</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status</span><br></pre></td></tr></table></figure>
+<p>打印以下信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">=== Branches ===</span><br><span class="line">*master</span><br><span class="line">other-branch</span><br><span class="line">  </span><br><span class="line">=== Staged Files ===</span><br><span class="line">wug.txt</span><br><span class="line">wug2.txt</span><br><span class="line">  </span><br><span class="line">=== Removed Files ===</span><br><span class="line">goodbye.txt</span><br><span class="line">  </span><br><span class="line">=== Modifications Not Staged For Commit ===</span><br><span class="line">junk.txt (deleted)</span><br><span class="line">wug3.txt (modified)</span><br><span class="line">  </span><br><span class="line">=== Untracked Files ===</span><br><span class="line">random.stuff</span><br></pre></td></tr></table></figure>
+<p>首先打印所有分支，读取Heads文件夹中的文件名即可，当前分支有head文件中的内容确定，在前面加*号即可。</p>
+<p>第二项读取所有保存在addstage中的文件名，打印出来即可。</p>
+<p>第三项读取所有保存在removestage中的文件名，打印出来即可。</p>
+<p>后两项是extra credit中的内容，我没有实现，所以只需要打印以下内容即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">=== Modifications Not Staged For Commit ===</span><br><span class="line">  </span><br><span class="line">=== Untracked Files ===</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>失败的情况</strong>：无</p>
 <h3 id="checkout">checkout</h3>
+<p>checkout有三种应用场景</p>
+<p>第一种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout – [filename]</span><br></pre></td></tr></table></figure>
+<p>当执行完commit后，工作目录中存在1.txt，我想修改它的内容或者直接删除，更改完或者删除后，我后悔了，就可以调用这第一种命令将文件recover回来。所以思路是这样的，如果当前commit追踪的文件包含filename，则将其写入到工作目录：如果同名文件存在，overwrite它，如果不存在，直接写入。</p>
+<p><strong>失败的情况</strong>：当前的commit中不存在filename的文件，输出<code>File does not exist in that commit.</code></p>
+<hr>
+<p>第二种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout [commitID] – [filename]</span><br></pre></td></tr></table></figure>
+<p>与第一种情况类似，只不过现在是从之前的某个commit追踪的文件中把filename的文件拉过来，只需要去相应的commitID执行操作就可以了。</p>
+<hr>
+<p>第三种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout [branchname]</span><br></pre></td></tr></table></figure>
+<p>这种情况下是切换branch的命令，如下图所示，一开始Head指向的是master分支的最新的commit，当执行<code>checkout 61abc</code>后，head就指向了61abc分支的最新的commit，并且工作目录中的文件全都会变成commit3B所包含的blob文件。那么这个文件转换过程可以分为三种文件：</p>
+<p>文件名既被commit3B追踪的文件，也被commit3A追踪，那么对于相同文件名但blobID不同（也就是内容不同），则用commit3B种的文件来替代原来的文件；相同文件名并且blobID相同，不进行任何操作。</p>
+<p>文件名不被commit3B追踪的文件，而仅被commit3A追踪，那么直接删除这些文件。</p>
+<p>文件名仅被commit3B追踪的文件，而不被commit3A追踪，那么直接将这些文件写入到工作目录。这里有个例外，即对于第三种情况，将要直接写入的时候如果有同名文件（例如1.txt）已经在工作目录中了，说明工作目录中在执行checkout前增加了新的1.txt文件而没有commit，这时候gitlet不知道是应该保存用户新添加进来的1.txt还是把commit3B中的1.txt拿过来overwrite掉，为了避免出现信息丢失，gitlet就会报错，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code></p>
+<p>更改head指向commit3B，最后清空缓存区。</p>
+<p><strong>失败的情况</strong>：如果branchname不存在，输出<code>No such branch exists.</code>，如果branchname就是当前分支，输出<code>No need to checkout the current branch.</code></p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252304468.png"  style="zoom: 50%;" />
+</div>
 <h3 id="branch">branch</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">branch [branchname]</span><br></pre></td></tr></table></figure>
+<p>增加一个branch，即在heads文件夹中添加一个新的名为branchname的文件，内容为当前的commitID。此操作不改变head指向，只是单纯增加一个branch。改变分支依然是通过checkout命令来改变。</p>
+<p><strong>失败的情况</strong>：无</p>
 <h3 id="rm-branch">rm-branch</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm-branch [branchname]</span><br></pre></td></tr></table></figure>
+<p>删除一个branch，此branch不能为现在的head指向的branch。具体操作为删除heads文件夹中的branchname文件即可。</p>
+<p><strong>失败的情况</strong>：如果给定的branchname不存在，输出<code>A branch with that name does not exist.</code>如果尝试删除的branch为当前branch，输出错误信息<code>Cannot remove the current branch.</code></p>
 <h3 id="reset">reset</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reset [commitID]</span><br></pre></td></tr></table></figure>
+<p>此命令即将版本回滚到指定的commitID处，首先将head指向指定的commitID，之后进行文件操作，这里的操作其实和checkout branch相同，可以复用代码，具体需要小伙伴自己思考，最后清空缓存区即可。</p>
+<p><strong>失败的情况</strong>：如果给定的commitID不存在，输出<code>No commit with that id exists.</code>，另外就是类似于checkout的overwrite错误，这里也可能会出现，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code>如果复用checkout的代码，第二种错误实际上是不需要考虑的（因为checkout中代码已经包含了）。</p>
 <h3 id="merge">merge</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merge [branchname]</span><br></pre></td></tr></table></figure>
+<p>此命令是为了将两个分支进行合并，将branchname与当前分支进行合并，所以branchname一定不能是当前的分支名。merge命令分为两步，第一步是找split point，第二步是合并文件。</p>
+<p>首先要做的是找到split point，也就是两个分支的最近距离的分开的commit节点，因为后面要对split point，当前commit，合并进来的commit三者进行比较来确定保留的文件，这个之后再说，先看split point。如下图所示</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260016998.png"  style="zoom: 65%;" />
+</div>
+<p>图中现有的分支有BranchA，BranchC，BranchMaster，他们的的split point如下表</p>
+<table>
+<thead>
+<tr>
+<th>Branch1</th>
+<th>Branch2</th>
+<th>Spilt Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BranchA</td>
+<td>BranchC</td>
+<td>Init commit</td>
+</tr>
+<tr>
+<td>BranchA</td>
+<td>BranchMaster</td>
+<td>Init commit</td>
+</tr>
+<tr>
+<td>BranchC</td>
+<td>BranchMaster</td>
+<td>commit3</td>
+</tr>
+</tbody>
+</table>
+<p>相信小伙伴们已经了解了split point，接下来说一下怎么寻找这个split point，肯定不可以用暴力两个for循环的方法，因为这个方法时间复杂度是O(n^2)，时间复杂度太高，所以小伙伴们可以先自己考虑以下如何实现。</p>
+<p>我的方法是BFS，以BranchA和BranchC为例，先从后往前用BFS算法进行遍历，将所有遍历到的commitID与他们的深度作为key和value放入Map中，例如对于BranchC来说，commit4B的ID就对应深度1，commit3的ID对应深度2······，遍历到initcommit停止，这时候，我们有两个Map，一个是BranchC的MapC，一个是BranchA的MapA。现在遍历MapA的keyset，如果MapC也包含此key，记录下对应的MapA的key和value，记为minkey和minvalue。接着遍历下去，对于下一个key，如果MapC也包含此key，并且对应的MapA的value＜minvalue,那么将minkey和minvalue改成现在的key和value，一直到遍历完MapA的keyset，这时候我们记录的minkey和minvalue就对应于split point的ID以及深度。检索完成，时间复杂度为O(n)，这样就找到了split point。</p>
+<p>接下来是文件的合并操作。此命令的文件合并有一个<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=JR3OYCMv9b4&amp;t=929s">参考视频</a>，可以先了解一下，这个是将other合并入head分支。</p>
+<p>在进行文件合并之前，首先要判断两个类型。</p>
+<p>如果split point和head分支的commit相同，意味着otherbranch与head在一个分支上并且超前于head，此时直接将head更新到otherbranch的当前commit，并且输出<code>Current branch fast-forwarded.</code></p>
+<p>如果split point和other分支的commit相同，意味着otherbranch与head在一个分支上并且滞后于head，此时其实已经完成了merge操作，这种情况下什么都不用干，直接输出<code>Given branch is an ancestor of the current branch.</code>即可。</p>
+<p>视频里的总体思路如下：</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252341784.png"  style="zoom: 100%;" />
+</div>
+<p>我举个更通俗易懂的例子，将61abc合并入master。如下图所示，颜色为白色代表此文件不存在，其他的不同颜色代表内容不同，最终的结果已经画在图中，序号所表示的情况与上图一一对应，例如1中61abc文件进行了修改，与splitpoint中不同，颜色就变了，而master中则没有修改，最终的结果是新产生的commit当中保留61abc当中的文件。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260040076.png"  style="zoom: 70%;" />
+</div>
+<p>也就是说，对于某一个文件，只要是有一个branch有过修改，就保留这个branch中对于文件的修改，如果两个branch都有修改，内容相同，也保留，这些都属于正常情况，产生的新commit message为<code>Merged [given branch name] into [current branch name].</code></p>
+<p>如果两个branch都有修改并且内容不同，那么gitlet不知道保留哪个，就会产生冲突。产生冲突要将先输出<code>Encountered a merge conflict.</code>再产生冲突的内容写入到最后的文件中，格式如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">contents of file in master branch</span><br><span class="line">=======</span><br><span class="line">contents of file in 61abc branch</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>失败的情况：<br>
+   如果缓存区还有blob（文件存在），输出错误信息：<br>
+   You have uncommitted changes.<br>
+   如果给定的branch不存在，输出错误信息：<br>
+   A branch with that name does not exist.<br>
+   如果给定的branch和当前branch相同，输出错误信息：<br>
+   Cannot merge a branch with itself.<br>
+   如果工作目录存在仅被merge commit跟踪，且将被覆写的文件，输出错误信息：<br>
+   There is an untracked file in the way; delete it, or add and commit it first.</p>
 <h2 id="调试指南">调试指南</h2>
 <h2 id="踩过的坑">踩过的坑</h2>
 <h2 id="总结">总结</h2>
