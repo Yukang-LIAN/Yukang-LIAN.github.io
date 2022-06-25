@@ -18,8 +18,10 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig1.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig2.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242116786.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png">
 <meta property="article:published_time" content="2022-06-22T02:18:53.000Z">
-<meta property="article:modified_time" content="2022-06-24T13:58:58.570Z">
+<meta property="article:modified_time" content="2022-06-25T03:27:08.771Z">
 <meta property="article:author" content="Yukang-LIAN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
@@ -177,7 +179,16 @@
 <p>接下来说一下gitlet的内部实现，首先，<code>gitlet init</code>命令会创建<code>.gitlet</code>文件夹，<code>.gitlet</code>文件夹是一个隐藏文件，windows要先打开显示隐藏文件的设置，linux或macox可通过<code>ls -la</code>进行查看，gitlet绝大部分操作都在<code>.gitlet</code>文件夹中进行工作，此文件夹的结构如以下代码所示。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">     *   .gitlet</span></span><br><span class="line"><span class="comment">     *      |--objects</span></span><br><span class="line"><span class="comment">     *      |     |--commit and blob</span></span><br><span class="line"><span class="comment">     *      |--refs</span></span><br><span class="line"><span class="comment">     *      |    |--heads</span></span><br><span class="line"><span class="comment">     *      |         |--master</span></span><br><span class="line"><span class="comment">     *      |--HEAD</span></span><br><span class="line"><span class="comment">     *      |--addstage</span></span><br><span class="line"><span class="comment">     *      |--removestage</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
 <h3 id="objects">objects</h3>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png"  style="zoom: 50%;" />
+</div>
 <h3 id="refs">refs</h3>
+<p><code>refs</code>文件夹内存储所有分支的末端信息，在<code>heads</code>文件夹内存有多个文件，每个文件的名字即为分支名字，以下图为例，有两个<code>branch</code>，一个是默认分支<code>master</code>，一个是新建立的<code>61abc</code>，那么<code>refs</code>文件夹的结构即为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     *      |--refs</span></span><br><span class="line"><span class="comment">     *          |--heads</span></span><br><span class="line"><span class="comment">     *               |--master</span></span><br><span class="line"><span class="comment">     *               |--61abc</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+<p>每个文件的内容是末端<code>commit</code>的40位ID，<code>master</code>文件的内容即为<code>Commit3A</code>的ID，<code>61abc</code>文件的内容为<code>Commit3B</code>的ID。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png"  style="zoom: 50%;" />
+</div>
 <h3 id="HEAD">HEAD</h3>
 <h3 id="stage">stage</h3>
 <h2 id="各功能编写思路">各功能编写思路</h2>
