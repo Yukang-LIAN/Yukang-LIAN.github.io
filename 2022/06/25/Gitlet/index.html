@@ -21,8 +21,9 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252219330.png">
 <meta property="article:published_time" content="2022-06-25T02:18:53.000Z">
-<meta property="article:modified_time" content="2022-06-25T14:09:04.442Z">
+<meta property="article:modified_time" content="2022-06-25T14:23:35.707Z">
 <meta property="article:author" content="Yukang-LIAN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
@@ -245,6 +246,12 @@
 <p><strong>失败的情况</strong>：如果该文件既不在addstage区域，也不被当前commit跟踪，说明工作目录中没有此文件。输出错误信息<code>No reason to remove the file.</code></p>
 <h3 id="log">log</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log</span><br></pre></td></tr></table></figure>
+<p>从当前commit开始倒着打印所有commit信息，直到init commit，使用一个循环即可完成此环节。</p>
+<p>有一个特殊的commit叫做merge commit，如下图所示，merge commit有两个parents，打印merge commit时只需要选择parentsList中的第一个即可，因为我们在下面merge操作时会将所需要打印的parents放在List中第一个位置。这里不作详细说明了。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252219330.png"  style="zoom: 50%;" />
+</div>
+<p><strong>失败的情况</strong>：无</p>
 <h3 id="global-log">global-log</h3>
 <h3 id="find">find</h3>
 <h3 id="status">status</h3>
