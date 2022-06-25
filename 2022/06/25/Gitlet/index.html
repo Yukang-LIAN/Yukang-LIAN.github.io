@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252341784.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260040076.png">
 <meta property="article:published_time" content="2022-06-25T02:18:53.000Z">
-<meta property="article:modified_time" content="2022-06-25T16:53:23.482Z">
+<meta property="article:modified_time" content="2022-06-25T16:55:41.120Z">
 <meta property="article:author" content="Yukang-LIAN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
@@ -364,15 +364,7 @@
 <p>也就是说，对于某一个文件，只要是有一个branch有过修改，就保留这个branch中对于文件的修改，如果两个branch都有修改，内容相同，也保留，这些都属于正常情况，产生的新commit message为<code>Merged [given branch name] into [current branch name].</code></p>
 <p>如果两个branch都有修改并且内容不同，那么gitlet不知道保留哪个，就会产生冲突。产生冲突要将先输出<code>Encountered a merge conflict.</code>再产生冲突的内容写入到最后的文件中，格式如下</p>
 <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">contents of file in master branch</span><br><span class="line">=======</span><br><span class="line">contents of file in 61abc branch</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p>失败的情况：<br>
-   如果缓存区还有blob（文件存在），输出错误信息：<br>
-   You have uncommitted changes.<br>
-   如果给定的branch不存在，输出错误信息：<br>
-   A branch with that name does not exist.<br>
-   如果给定的branch和当前branch相同，输出错误信息：<br>
-   Cannot merge a branch with itself.<br>
-   如果工作目录存在仅被merge commit跟踪，且将被覆写的文件，输出错误信息：<br>
-   There is an untracked file in the way; delete it, or add and commit it first.</p>
+<p><strong>失败的情况</strong>：如果缓存区存在文件，输出<code>You have uncommitted changes.</code>如果给定的branch不存在，输出<code>A branch with that name does not exist.</code>如果给定的branch和当前branch相同，输出<code>Cannot merge a branch with itself.</code>如果工作目录存在仅被merge commit跟踪，且将被覆写的文件，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code></p>
 <h2 id="调试指南">调试指南</h2>
 <h2 id="踩过的坑">踩过的坑</h2>
 <h2 id="总结">总结</h2>
