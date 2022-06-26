@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="#! https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;533852192 title: Gitlet date: 2022-06-25 10:18:53 tags: 前言 最近在学习UCB的CS61b课程，我学习的版本是2018Spring，用了大约一个月完成了所有Lab、Homework和Project，之前就听群友说61b的gitlet项目非常值得做，但是2018Spring版本没有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="abmdocrt">
+<meta property="og:url" content="https://yukang-lian.github.io/2022/06/22/Gitlet/index.html">
+<meta property="og:site_name" content="abmdocrt">
+<meta property="og:description" content="#! https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;533852192 title: Gitlet date: 2022-06-25 10:18:53 tags: 前言 最近在学习UCB的CS61b课程，我学习的版本是2018Spring，用了大约一个月完成了所有Lab、Homework和Project，之前就听群友说61b的gitlet项目非常值得做，但是2018Spring版本没有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242135232.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242116786.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252219330.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252304468.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260016998.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252341784.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260040076.png">
+<meta property="article:published_time" content="2022-06-22T02:18:53.756Z">
+<meta property="article:modified_time" content="2022-06-26T02:54:37.087Z">
+<meta property="article:author" content="Yukang-LIAN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>abmdocrt</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Yukang-LIAN">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/05/22/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yukang-lian.github.io/2022/06/22/Gitlet/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://yukang-lian.github.io/2022/06/22/Gitlet/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yukang-lian.github.io/2022/06/22/Gitlet/&t="><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-zhuanlan-zhihu-com-p-533852192"><span class="toc-number">1.</span> <span class="toc-text">#! https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;533852192</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Gitletdate-2022-06-25-10-18-53tags"><span class="toc-number">2.</span> <span class="toc-text">title: Gitlet
+date: 2022-06-25 10:18:53
+tags:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">Gitlet总体介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">Gitlet原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.</span> <span class="toc-text">Gitlet内部结构实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#objects"><span class="toc-number">6.1.</span> <span class="toc-text">objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#refs"><span class="toc-number">6.2.</span> <span class="toc-text">refs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD"><span class="toc-number">6.3.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stage"><span class="toc-number">6.4.</span> <span class="toc-text">stage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E5%8A%9F%E8%83%BD%E7%BC%96%E5%86%99%E6%80%9D%E8%B7%AF"><span class="toc-number">7.</span> <span class="toc-text">各功能编写思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8Bargs%E7%9A%84%E5%90%88%E6%B3%95%E6%80%A7"><span class="toc-number">7.1.</span> <span class="toc-text">检测args的合法性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">7.2.</span> <span class="toc-text">init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add"><span class="toc-number">7.3.</span> <span class="toc-text">add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commit"><span class="toc-number">7.4.</span> <span class="toc-text">commit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm"><span class="toc-number">7.5.</span> <span class="toc-text">rm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#log"><span class="toc-number">7.6.</span> <span class="toc-text">log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#global-log"><span class="toc-number">7.7.</span> <span class="toc-text">global-log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-number">7.8.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#status"><span class="toc-number">7.9.</span> <span class="toc-text">status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checkout"><span class="toc-number">7.10.</span> <span class="toc-text">checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#branch"><span class="toc-number">7.11.</span> <span class="toc-text">branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm-branch"><span class="toc-number">7.12.</span> <span class="toc-text">rm-branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reset"><span class="toc-number">7.13.</span> <span class="toc-text">reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#merge"><span class="toc-number">7.14.</span> <span class="toc-text">merge</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">TODO：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F%E6%95%B4%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">文章格式整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97"><span class="toc-number">10.</span> <span class="toc-text">调试指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91"><span class="toc-number">11.</span> <span class="toc-text">踩过的坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">12.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Yukang-LIAN</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-06-22T02:18:53.756Z" itemprop="datePublished">2022-06-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="https-zhuanlan-zhihu-com-p-533852192">#! <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/533852192">https://zhuanlan.zhihu.com/p/533852192</a></h2>
+<h2 id="title-Gitletdate-2022-06-25-10-18-53tags">title: Gitlet<br>
+date: 2022-06-25 10:18:53<br>
+tags:</h2>
+<h2 id="前言">前言</h2>
+<p>最近在学习UCB的CS61b课程，我学习的版本是2018Spring，用了大约一个月完成了所有Lab、Homework和Project，之前就听群友说61b的gitlet项目非常值得做，但是2018Spring版本没有，于是找来了21Spring的gitlet写了一下，前前后后写了6天总共花了37个小时（仅编代码与debug时间），代码大约1200行，其中有大概10小时花在给<code>merge</code>函数debug，只是我当时脑子不清醒逻辑有点混乱所以才导致花了这么长时间，其实只是几行代码顺序写反了，找bug找了很久😭。附上时间、分数以及<a target="_blank" rel="noopener" href="https://github.com/Yukang-LIAN/005-UCB-CS61B-GITLET/tree/main/proj2">Github链接</a>。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242136798.png"  style="zoom: 40%;" />
+    </br>
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242135232.png"  style="zoom: 40%;" />
+</div>
+<h2 id="Gitlet总体介绍">Gitlet总体介绍</h2>
+<p>Gitlet是UCB CS61b课程中的一个项目，实现了简化版的git，支持<code>add</code>，<code>commit</code>，<code>log</code>，<code>checkout</code>，<code>merge</code>等操作。git是一个分布式的版本控制工具，有一定编程经验的小伙伴肯定对这个软件比较熟悉，我只会<code>add</code>，<code>commit</code>，<code>push</code>，<code>pull</code>，这对我来说就已经够用了😆，如果想要了解更多的git知识，请点击<a target="_blank" rel="noopener" href="https://git-scm.com">git官网</a>查看。</p>
+<p>几个可能有帮助的资料：<a target="_blank" rel="noopener" href="https://sp21.datastructur.es/materials/proj/proj2/proj2">gitlet官方文档</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43405649/article/details/124270510">gitlet学习笔记</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96631135">知乎git动图详解</a>。对了，在做gitlet请前先把<a target="_blank" rel="noopener" href="https://sp21.datastructur.es/materials/lab/lab6/lab6">Lab6</a>完成，熟悉文件的读写操作。</p>
+<p>git和gitlet在原理上差不多，但实现上gitlet简化了不少内容，时间不充裕的话不建议钻牛角尖实现真正的git，只需要通过这个项目了解一下git大致原理就好。</p>
+<h2 id="Gitlet原理">Gitlet原理</h2>
+<p>原理上gitlet与git并无二致，都是将一个版本的所有文件内容保存起来，可以在不同版本之间进行切换，保证所有存在过的版本都不会丢失，那如何区分一个版本呢？答案是用commit命令创建一个版本快照（snapshot），就相当于用相机拍下这个时刻的照片，并且按顺序将照片串起来，当想回到某个版本时，只需要按照顺序往前翻就可以了。下图展示了Gitlet的简单原理。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig1.png"  style="zoom: 60%;" />
+</div>
+<p>当Gitlet初始化时，系统自动生成一个init Commit，这个Commit不记录任何文件，之后，每有一个新的版本，会有一个新的Commit，Commit会记录版本文件信息，也就是图中的指针指向的两个文件。</p>
+<p>当前最新版本的Commit会由一个Head进行标记，此处是Commit2，也就是说当前文件夹内只包含<code>3.txt</code>和<code>4.txt</code>，当需要切换到Commit1时，我们可以看到Commit1记录了<code>1.txt</code>和<code>2.txt</code>，那如何进行版本转换呢？只需要将Head移动到Commit1上，读取Commit1记录的文件<code>1.txt</code>和<code>2.txt</code>，将Commit1记录的文件重新写入到当前文件夹，并且删除<code>3.txt</code>和<code>4.txt</code>即可完成版本转换，现在的文件夹就只包含<code>1.txt</code>和<code>2.txt</code>了。</p>
+<p>上图中Commit1和Commit2内容完全不同，如果Commit1和Commit2存在相同的文件，只需要保存一个就可以，这样能够在很大程度上节省空间。如下图所示。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/GitletOverviewFig2.png"  style="zoom: 60%;" />
+</div>
+<p>这样转换版本时只需要将<code>4.txt</code>删除，添加新的<code>1.txt</code>就可以了。</p>
+<p>gitlet还可以实现不同的分支功能，当多人进行同时开发时，为了互不影响，可以采取多个路线同时进行的方式，在gitlet中叫做<code>branch</code>，如下图所示，BranchA和BranchB是两个不同的分支，HeadA和HeadB是为了记录当前gitlet的所有分支的头，而Head则指向当前的Commit，彼此之间没有关联。也就是说，当前文件夹中的文件依然只有<code>2.txt</code>和<code>4.txt</code>，HeadB和HeadA只是起到一个记录的作用，并不代表文件夹当前的Commit。例如，Head和HeadA可以同时指向Commit3A。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206242116786.png"  style="zoom: 50%;" />
+</div>
+<h2 id="Gitlet内部结构实现">Gitlet内部结构实现</h2>
+<p>接下来说一下gitlet的内部实现，首先，<code>gitlet init</code>命令会创建<code>.gitlet</code>文件夹，<code>.gitlet</code>文件夹是一个隐藏文件，windows要先打开显示隐藏文件的设置，linux或macox可通过<code>ls -la</code>进行查看，gitlet绝大部分操作都在<code>.gitlet</code>文件夹中进行工作，此文件夹的结构如以下代码所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">     *   .gitlet</span></span><br><span class="line"><span class="comment">     *      |--objects</span></span><br><span class="line"><span class="comment">     *      |     |--commit and blob</span></span><br><span class="line"><span class="comment">     *      |--refs</span></span><br><span class="line"><span class="comment">     *      |    |--heads</span></span><br><span class="line"><span class="comment">     *      |         |--master</span></span><br><span class="line"><span class="comment">     *      |--HEAD</span></span><br><span class="line"><span class="comment">     *      |--addstage</span></span><br><span class="line"><span class="comment">     *      |--removestage</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+<h3 id="objects">objects</h3>
+<p><code>objects</code>是gitlet中一个相当重要的概念，每一个Commit对应一个Commit对象，每一个文件对应一个Blob对象，如何定义一个对象呢，答案是由它本身的<code>hashcode</code>来决定的，也就是根据每个对象不同的信息，通过<code>sha1</code>算法来得到独一无二的一个<code>hashcode</code>，我把这个<code>hashcode</code>叫做ID，只有拥有同一个ID的才能视为同一对象，这些对象都通过序列化写入到objects文件夹中，每个对象对应一个文件，文件名即为40位的对象ID。</p>
+<p>对于每个文件来讲，在<code>gitlet</code>中是以Blob的形式保存的，不同的文件对应不同的Blob，相同的文件对应同一个Blob，如何区分不同的文件呢？只有相同文件名和相同文件内容的文件才能成为相同的文件，例如下图中，Blob1的文件名叫<code>1.txt</code>，内容为111，Blob3的文件名也叫<code>1.txt</code>，但是内容变成了333，这就是两个不同的Blob。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png"  style="zoom: 50%;" />
+</div>
+<p>对于Commit来讲，同一个对象应当包含相同的<code>message</code>,<code>parents</code>,<code>date</code>,<code>blobID</code>,其中<code>message</code>是每次执行<code>gitlet commit</code>时附带的信息，例如“init commit”，“add file1”等等；<code>parents</code>中保存的是前一个Commit的ID信息，当执行完<code>merge</code>操作时，会将两个Branch合并，这时候，合并完的Commit会指向两个commit，也就是说这个Commit的<code>parents</code>中有两个ID；<code>date</code>是执行<code>commit</code>时自动生成的时间信息，在这里，一定要注意，gradescope会要求时间信息的格式<code>Wed Dec 31 16:00:00 1969 -0800</code>，不是这个格式会在<code>gitlet log</code>命令中报错；最后是<code>blobID</code>，每个Commit对应多个保存的文件，只需要将文件的<code>blobID</code>保存在Commit当中就可以在<code>objects</code>文件夹中找到对应的Blob对象了。</p>
+<p>总结一下，<code>objects</code>文件夹中保存着所有的Commit和文件信息，不管是Commit还是文件，都被称为对象，每个对象都有一个独一无二的ID，所以要想确定一个对象，只需要知道它的ID就可以在<code>objects</code>文件夹中找到了。</p>
+<h3 id="refs">refs</h3>
+<p><code>refs</code>文件夹内存储所有分支的末端信息，在<code>heads</code>文件夹内存有多个文件，每个文件的名字即为分支名字，以下图为例，有两个Branch，一个是默认分支<code>master</code>，一个是新建立的<code>61abc</code>，那么<code>refs</code>文件夹的结构即为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">     *      |--refs</span></span><br><span class="line"><span class="comment">     *          |--heads</span></span><br><span class="line"><span class="comment">     *               |--master</span></span><br><span class="line"><span class="comment">     *               |--61abc</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+<p>每个文件的内容是末端Commit的40位ID，<code>master</code>文件的内容即为Commit3A的ID，<code>61abc</code>文件的内容为Commit3B的ID。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251027802.png"  style="zoom: 50%;" />
+</div>
+<h3 id="HEAD">HEAD</h3>
+<p><code>HEAD</code>文件记录的是当前指向的Commit的ID。上图中，<code>HEAD</code>文件中的内容即为Commit2的40位ID。</p>
+<h3 id="stage">stage</h3>
+<p><code>stage</code>为暂存区，当执行<code>gitlet add &quot;a.txt&quot;</code>时，只是先将<code>a.txt</code>暂存起来，此时<code>a.txt</code>的Blob对象已经创建，但是还没有将Commit指向此Blob，执行<code>commit</code>后才真正将Commit和Blob连接起来，具体可以参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/96631135">这篇文章</a>中<code>add</code>和<code>commit</code>的动图演示，在我的实现版本中，我将<code>stage</code>拆开变成<code>addstage</code>和<code>removestage</code>，分别对应<code>add</code>命令和<code>rm</code>命令所需要进行的一些操作，这样比较好写代码，小伙伴们可以尝试将这两个写在一起，只需要一个<code>stage</code>就可以实现了。😉</p>
+<h2 id="各功能编写思路">各功能编写思路</h2>
+<p><strong>请各位小伙伴先自己思考，如果有看不明白的地方，再配合此资料以及上面提到的几个进行理解。</strong>😁</p>
+<h3 id="检测args的合法性">检测args的合法性</h3>
+<p>如果输入了不正确的<code>args</code>或者<code>args</code>参数数目不正确，输出错误信息<code>Incorrect operands.</code></p>
+<h3 id="init">init</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init</span><br></pre></td></tr></table></figure>
+<p>初始化gitlet仓库，先建立整体的<code>.gitlet</code>文件框架，之后建立一个Commit对象initCommit，<code>message</code>为<code>initial commit</code>，<code>parents</code>和<code>blobID</code>都为空（注意不是<code>null</code>，而是一个空列表，如果为<code>null</code>会在产生hashcode环节报错），<code>date</code>为<code>Thursday, 1 January 1970</code>，直接可以通过以下代码生成</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.currentTime = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>此处生成的并不是标准格式的时间戳，可以通过一下代码来转换得到<code>String</code>类型的时间戳</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">dateToTimeStamp</span><span class="params">(Date date)</span> &#123;</span><br><span class="line">       <span class="type">DateFormat</span> <span class="variable">dateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;EEE MMM d HH:mm:ss yyyy Z&quot;</span>, Locale.US);</span><br><span class="line">       <span class="keyword">return</span> dateFormat.format(date);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>最后需要产生ID，可以通过下面代码得到，<code>sha1()</code>函数的输入变量必须是<code>String</code>类型，所以要将所有变量变为<code>String</code>类型才能得到40位ID。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String <span class="title function_">generateID</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Utils.sha1(dateToTimeStamp(currentTime), message, parents.toString(), pathToBlobID.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样就建立了一个initCommit对象，之后将其写入<code>objects</code>文件夹即可。</p>
+<p><strong>失败的情况</strong>：如果一个<code>.gitlet</code>仓库已经存在，输出<code>A Gitlet version-control system already exists in the current directory.</code>然后退出。</p>
+<h3 id="add">add</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add [filename]</span><br></pre></td></tr></table></figure>
+<p><code>add</code>操作会将所有未存储的文件以Blob的形式存起来，存储的对象别忘了要先实例化,即</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Commit</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Blob</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，所有<code>static</code>标签标记的变量都不会被存储，所以声明变量时不要加<code>static</code>。</p>
+<p>除此之外，所有存储起来的文件名以及对应的<code>blobID</code>都要写入到<code>addstage</code>中，以便于下次<code>commit</code>的时候读取。以下是我的Commit、Blob以及Stage的实例变量。<strong>仅供参考</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  commit object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> String message;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Map&lt;String, String&gt; pathToBlobID = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> List&lt;String&gt; parents;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Date currentTime;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File commitSaveFileName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String timeStamp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  blob object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="type">byte</span>[] bytes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File fileName;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String filePath;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File blobSaveFileName;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *  stage object</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> Map&lt;String, String&gt; pathToBlobID = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p><strong>失败的情况</strong>：如果文件不存在，输出<code>File does not exist.</code></p>
+<h3 id="commit">commit</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">commit [message]</span><br></pre></td></tr></table></figure>
+<p>实例化一个新的Commit对象并且存起来。具体实现如下：</p>
+<p><code>message</code>就是输入的message信息。</p>
+<p><code>parents</code>指向前一个Commit，前一个<code>commitID</code>可由<code>HEAD</code>得到，再通过<code>commitID</code>读取相应对象的信息。</p>
+<p><code>date</code>直接通过<code>this.currentTime = new Date();</code>生成即可，注意格式需要变换一下。</p>
+<p><code>BlobID</code>是一个<code>map</code>（也可以用<code>list</code>，不过不太方便），记录文件路径到文件ID的映射，我的实现方法是先将前一个Commit的<code>map</code>复制过来，再将其与<code>addstage</code>中的文件比较，得到需要删除的文件以及需要增加的文件，通过<code>map</code>的key value操作进行增删。以下图为例，Commit1到Commit2，增加了Blob1和Blob2，Commit2到Commit3删除了Blob1，增加了Blob3。</p>
+<p>ID依然通过<code>sha1</code>函数生成即可。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206251121848.png"  style="zoom: 50%;" />
+</div>
+<p>实例化完毕之后，将此Commit保存起来，让<code>HEAD</code>指向此Commit，清空<code>addstage</code>即完成了<code>commit</code>。</p>
+<p><strong>失败的情况</strong>：如果<code>addstage</code>中没有内容，输出错误信息<code>No changes added to the commit.</code>如果<code>message</code>为空，输出错误信息<code>Please enter a commit message.</code></p>
+<h3 id="rm">rm</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> [filename]</span><br></pre></td></tr></table></figure>
+<p><code>rm</code>函数功能为删除工作目录中名为filename的文件，这分三种情况：</p>
+<p>文件刚被<code>add</code>进<code>addstage</code>而没有<code>commit</code>，直接删除<code>addstage</code>中的Blob就可以。</p>
+<p>文件被当前Commit追踪并且存在于工作目录中，那么就将及放入<code>removestage</code>并且在工作目录中删除此文件。在下次<code>commit</code>中进行记录。</p>
+<p>文件被当前Commit追踪并且不存在于工作目录中，那么就将及放入<code>removestage</code>并即可（<code>commit</code>之后手动删除文件，然后执行<code>rm</code>，第二次<code>rm</code>就对应这种情况）。</p>
+<p>除了这三种情况外，工作目录中不可能存在名为filename的文件了，所以<code>rm</code>就只对应这三种情况。</p>
+<p><strong>失败的情况</strong>：如果该文件既不在<code>addstage</code>区域，也不被当前Commit跟踪，说明工作目录中没有此文件。输出错误信息<code>No reason to remove the file.</code></p>
+<h3 id="log">log</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<p>从当前Commit开始倒着打印所有Commit信息，直到initCommit，使用一个循环即可完成此环节。</p>
+<p>有一个特殊的Commit叫做<code>merge commit</code>，如下图所示，<code>merge commit</code>有两个<code>parents</code>，打印<code>merge commit</code>时只需要选择parentsList中的第一个即可，因为我们在下面<code>merge</code>操作时会将所需要打印的<code>parents</code>放在List中第一个位置。这里不作详细说明了。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252219330.png"  style="zoom: 50%;" />
+</div>
+<p><strong>失败的情况</strong>：无</p>
+<h3 id="global-log">global-log</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">global-log</span><br></pre></td></tr></table></figure>
+<p>打印所有的Commit而不关心顺序，只需要读取<code>objects</code>文件夹中的所有Commit，打印出来就好，以下函数功能是返回所有<code>objects</code>文件夹中Commit，是以List形式存储的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; commitList = Utiles.plainFilenamesIn(OBJECT_DIR);</span><br></pre></td></tr></table></figure>
+<p>其中的<code>OBJECT_DIR</code>是是我自定义的，定义如下，这都可以从Lab6中学到，大伙不要傻傻的抄过去发现报错了不知道哪里的问题😂。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">File</span> <span class="variable">GITLET_DIR</span> <span class="operator">=</span> join(CWD, <span class="string">&quot;.gitlet&quot;</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">File</span> <span class="variable">OBJECT_DIR</span> <span class="operator">=</span> join(GITLET_DIR, <span class="string">&quot;objects&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>失败的情况</strong>：无</p>
+<h3 id="find">find</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [commitmessage]</span><br></pre></td></tr></table></figure>
+<p>打印所有与输入message相同的Commit的ID，与上面思路类似，先读取所有的Commit，找到符合的，打印出ID即可，如果有多个结果，一行一个。</p>
+<p><strong>失败的情况</strong>：无</p>
+<h3 id="status">status</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">status</span><br></pre></td></tr></table></figure>
+<p>打印以下信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">=== Branches ===</span><br><span class="line">*master</span><br><span class="line">other-branch</span><br><span class="line">  </span><br><span class="line">=== Staged Files ===</span><br><span class="line">wug.txt</span><br><span class="line">wug2.txt</span><br><span class="line">  </span><br><span class="line">=== Removed Files ===</span><br><span class="line">goodbye.txt</span><br><span class="line">  </span><br><span class="line">=== Modifications Not Staged For Commit ===</span><br><span class="line">junk.txt (deleted)</span><br><span class="line">wug3.txt (modified)</span><br><span class="line">  </span><br><span class="line">=== Untracked Files ===</span><br><span class="line">random.stuff</span><br></pre></td></tr></table></figure>
+<p>首先打印所有分支，读取<code>Heads</code>文件夹中的文件名即可，当前分支由<code>HEAD</code>文件中的内容确定，在前面加<code>*</code>号即可。</p>
+<p>第二项读取所有保存在<code>addstage</code>中的文件名，打印出来即可。</p>
+<p>第三项读取所有保存在<code>removestage</code>中的文件名，打印出来即可。</p>
+<p>后两项是extra credit中的内容，我没有实现，所以只需要打印以下内容即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">=== Modifications Not Staged For Commit ===</span><br><span class="line">  </span><br><span class="line">=== Untracked Files ===</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>失败的情况</strong>：无</p>
+<h3 id="checkout">checkout</h3>
+<p>checkout有三种应用场景</p>
+<p>第一种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout – [filename]</span><br></pre></td></tr></table></figure>
+<p>当执行完<code>commit</code>后，工作目录中存在<code>1.txt</code>，我想修改它的内容或者直接删除，更改完或者删除后，我后悔了，就可以调用这第一种命令将文件recover回来。所以思路是这样的，如果当前Commit追踪的文件包含filename，则将其写入到工作目录：如果同名文件存在，overwrite它，如果不存在，直接写入。</p>
+<p><strong>失败的情况</strong>：当前的Commit中不存在filename的文件，输出<code>File does not exist in that commit.</code></p>
+<hr>
+<p>第二种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout [commitID] – [filename]</span><br></pre></td></tr></table></figure>
+<p>与第一种情况类似，只不过现在是从之前的某个Commit追踪的文件中把filename的文件拉过来，只需要去相应的<code>commitID</code>执行操作就可以了。</p>
+<hr>
+<p>第三种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkout [branchname]</span><br></pre></td></tr></table></figure>
+<p>这种情况下是切换Branch的命令，如下图所示</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252304468.png"  style="zoom: 50%;" />
+</div>
+<p>一开始<code>HEAD</code>指向的是<code>master</code>分支的最新的Commit，当执行<code>checkout 61abc</code>后，<code>HEAD</code>就指向了<code>61abc</code>分支的最新的Commit，并且工作目录中的文件全都会变成Commit3B所包含的Blob文件。那么这个文件转换过程可以分为三种文件：</p>
+<p>文件名既被Commit3B追踪的文件，也被Commit3A追踪，那么对于相同文件名但<code>blobID</code>不同（也就是内容不同），则用Commit3B种的文件来替代原来的文件；相同文件名并且<code>blobID</code>相同，不进行任何操作。</p>
+<p>文件名不被Commit3B追踪的文件，而仅被Commit3A追踪，那么直接删除这些文件。</p>
+<p>文件名仅被Commit3B追踪的文件，而不被Commit3A追踪，那么直接将这些文件写入到工作目录。这里有个例外，即对于第三种情况，将要直接写入的时候如果有同名文件（例如<code>1.txt</code>）已经在工作目录中了，说明工作目录中在执行<code>checkout</code>前增加了新的<code>1.txt</code>文件而没有<code>commit</code>，这时候gitlet不知道是应该保存用户新添加进来的<code>1.txt</code>还是把Commit3B中的<code>1.txt</code>拿过来overwrite掉，为了避免出现信息丢失，gitlet就会报错，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code></p>
+<p>更改<code>HEAD</code>指向Commit3B，最后清空缓存区。</p>
+<p><strong>失败的情况</strong>：如果branchname不存在，输出<code>No such branch exists.</code>，如果branchname就是当前分支，输出<code>No need to checkout the current branch.</code></p>
+<h3 id="branch">branch</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">branch [branchname]</span><br></pre></td></tr></table></figure>
+<p>增加一个Branch，即在<code>heads</code>文件夹中添加一个新的名为branchname的文件，内容为当前的commitID。此操作不改变<code>HEAD</code>指向，只是单纯增加一个Branch。改变分支依然是通过<code>checkout</code>命令来改变。</p>
+<p><strong>失败的情况</strong>：无</p>
+<h3 id="rm-branch">rm-branch</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm-branch [branchname]</span><br></pre></td></tr></table></figure>
+<p>删除一个Branch，此Branch不能为现在的<code>HEAD</code>指向的Branch。具体操作为删除<code>heads</code>文件夹中的branchname文件即可。</p>
+<p><strong>失败的情况</strong>：如果给定的branchname不存在，输出<code>A branch with that name does not exist.</code>如果尝试删除的Branch为当前Branch，输出错误信息<code>Cannot remove the current branch.</code></p>
+<h3 id="reset">reset</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reset [commitID]</span><br></pre></td></tr></table></figure>
+<p>此命令即将版本回滚到指定的commitID处，首先将<code>HEAD</code>指向指定的commitID，之后进行文件操作，这里的操作其实和<code>checkout branch</code>相同，可以复用代码，具体需要小伙伴自己思考，最后清空缓存区即可。</p>
+<p><strong>失败的情况</strong>：如果给定的commitID不存在，输出<code>No commit with that id exists.</code>，另外就是类似于checkout的overwrite错误，这里也可能会出现，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code>如果复用checkout的代码，第二种错误实际上是不需要考虑的（因为checkout中代码已经包含了）。</p>
+<h3 id="merge">merge</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">merge [branchname]</span><br></pre></td></tr></table></figure>
+<p>此命令是为了将两个分支进行合并，将branchname与当前分支进行合并，所以branchname一定不能是当前的分支名。<code>merge</code>命令分为两步，第一步是找split point，第二步是合并文件。</p>
+<p>首先要做的是找到split point，也就是两个分支的最近距离的分开的Commit节点，因为后面要对split point，当前Commit，合并进来的Commit三者进行比较来确定保留的文件，这个之后再说，先看split point。如下图所示</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260016998.png"  style="zoom: 65%;" />
+</div>
+<p>图中现有的分支有BranchA，BranchC，BranchMaster，他们的的split point如下表</p>
+<table>
+<thead>
+<tr>
+<th>Branch1</th>
+<th>Branch2</th>
+<th>Spilt Point</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BranchA</td>
+<td>BranchC</td>
+<td>Init commit</td>
+</tr>
+<tr>
+<td>BranchA</td>
+<td>BranchMaster</td>
+<td>Init commit</td>
+</tr>
+<tr>
+<td>BranchC</td>
+<td>BranchMaster</td>
+<td>commit3</td>
+</tr>
+</tbody>
+</table>
+<p>相信小伙伴们已经了解了split point，接下来说一下怎么寻找这个split point，肯定不可以用暴力两个for循环的方法，因为这个方法时间复杂度是O(n^2)，时间复杂度太高，所以小伙伴们可以先自己考虑以下如何实现。</p>
+<p>我的方法是BFS，以BranchA和BranchC为例，先从后往前用BFS算法进行遍历，将所有遍历到的commitID与他们的深度作为key和value放入Map中，例如对于BranchC来说，Commit4B的ID就对应深度1，Commit3的ID对应深度2······，遍历到initCommit停止，这时候，我们有两个Map，一个是BranchC的MapC，一个是BranchA的MapA。现在遍历MapA的keyset，如果MapC也包含此key，记录下对应的MapA的key和value，记为minkey和minvalue。接着遍历下去，对于下一个key，如果MapC也包含此key，并且对应的MapA的value＜minvalue,那么将minkey和minvalue改成现在的key和value，一直到遍历完MapA的keyset，这时候我们记录的minkey和minvalue就对应于split point的ID以及深度。检索完成，时间复杂度为O(n)，这样就找到了split point。</p>
+<p>接下来是文件的合并操作。此命令的文件合并有一个<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=JR3OYCMv9b4&amp;t=929s">参考视频</a>，可以先了解一下，这个是将<code>other</code>合并入<code>HEAD</code>分支。</p>
+<p>在进行文件合并之前，首先要判断两个类型。</p>
+<p>如果split point和<code>HEAD</code>分支的Commit相同，意味着<code>otherbranch</code>与<code>HEAD</code>在一个分支上并且超前于<code>HEAD</code>，此时直接将<code>HEAD</code>更新到<code>otherbranch</code>的当前Commit，并且输出<code>Current branch fast-forwarded.</code></p>
+<p>如果split point和<code>other</code>分支的ommit相同，意味着<code>otherbranch</code>与<code>HEAD</code>在一个分支上并且滞后于<code>HEAD</code>，此时其实已经完成了<code>merge</code>操作，这种情况下什么都不用干，直接输出<code>Given branch is an ancestor of the current branch.</code>即可。</p>
+<p>视频里的总体思路如下：</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206252341784.png"  style="zoom: 100%;" />
+</div>
+<p>我举个更通俗易懂的例子，将<code>61abc</code>合并入<code>master</code>。如下图所示，颜色为白色代表此文件不存在，其他的不同颜色代表内容不同，最终的结果已经画在图中，序号所表示的情况与上图一一对应，例如1中<code>61abc</code>文件进行了修改，与splitpoint中不同，颜色就变了，而<code>master</code>中则没有修改，最终的结果是新产生的Commit当中保留<code>61abc</code>当中的文件。</p>
+<div align="center">
+    <img src="https://cdn.jsdelivr.net/gh/Yukang-LIAN/PictureRepo/202206260040076.png"  style="zoom: 70%;" />
+</div>
+<p>也就是说，对于某一个文件，只要是有一个Branch有过修改，就保留这个Branch中对于文件的修改，如果两个Branch都有修改，内容相同，也保留，这些都属于正常情况，产生的新commit message为<code>Merged [given branch name] into [current branch name].</code></p>
+<p>如果两个Branch都有修改并且内容不同，那么gitlet不知道保留哪个，就会产生冲突。产生冲突要将先输出<code>Encountered a merge conflict.</code>再产生冲突的内容写入到最后的文件中，格式如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">contents of file in master branch</span><br><span class="line">=======</span><br><span class="line">contents of file in 61abc branch</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>我的具体思路是这样的：以<code>61abc</code>合并入<code>master</code>为例子。先把<code>master</code>的Commit放到合并后的Commit位置，再将split point，master，61abc的Commit中的所有文件放入一个ID为key、filename为value的Map中，命名为allfileMap；再分别将上述三个Commit中的文件放入ID为key、filename为value的Map中，分别命名为splitMap，masterMap，61abcMap。遍历allfileMap中的keyset，判断其余三个Map中的文件存在以及修改情况，就能够判断出上述7种不同情况，然后对每个文件进行删除、覆写、直接写入等操作，这样就完成了<code>merge</code>操作。</p>
+<p><strong>失败的情况</strong>：如果缓存区存在文件，输出<code>You have uncommitted changes.</code>如果给定的Branch不存在，输出<code>A branch with that name does not exist.</code>如果给定的Branch和当前Branch相同，输出<code>Cannot merge a branch with itself.</code>如果工作目录存在仅被merge commit跟踪，且将被覆写的文件，输出<code>There is an untracked file in the way; delete it, or add and commit it first.</code></p>
+<p><code>merge</code>操作理解起来并不难，主要是情况分类有点多，容易出现错误，我在<code>merge</code>这里花了大概十几个小时，大部分都在调试，bug都是很小的错误，但是调试起来比较麻烦，所以小伙伴们一定要有耐心，慢慢来，最后肯定能够调试出来的！</p>
+<p>到这里就可以恭喜你已经完成gitlet了！！！！</p>
+<p><strong>完结撒花</strong>！！！🌸🌷🌺🌹🌻💐</p>
+<h2 id="TODO：">TODO：</h2>
+<h2 id="文章格式整理">文章格式整理</h2>
+<h2 id="调试指南">调试指南</h2>
+<h2 id="踩过的坑">踩过的坑</h2>
+<h2 id="总结">总结</h2>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/Yukang-LIAN">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#https-zhuanlan-zhihu-com-p-533852192"><span class="toc-number">1.</span> <span class="toc-text">#! https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;533852192</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Gitletdate-2022-06-25-10-18-53tags"><span class="toc-number">2.</span> <span class="toc-text">title: Gitlet
+date: 2022-06-25 10:18:53
+tags:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.</span> <span class="toc-text">Gitlet总体介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E5%8E%9F%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">Gitlet原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gitlet%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">6.</span> <span class="toc-text">Gitlet内部结构实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#objects"><span class="toc-number">6.1.</span> <span class="toc-text">objects</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#refs"><span class="toc-number">6.2.</span> <span class="toc-text">refs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD"><span class="toc-number">6.3.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stage"><span class="toc-number">6.4.</span> <span class="toc-text">stage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E5%8A%9F%E8%83%BD%E7%BC%96%E5%86%99%E6%80%9D%E8%B7%AF"><span class="toc-number">7.</span> <span class="toc-text">各功能编写思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8Bargs%E7%9A%84%E5%90%88%E6%B3%95%E6%80%A7"><span class="toc-number">7.1.</span> <span class="toc-text">检测args的合法性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">7.2.</span> <span class="toc-text">init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add"><span class="toc-number">7.3.</span> <span class="toc-text">add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commit"><span class="toc-number">7.4.</span> <span class="toc-text">commit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm"><span class="toc-number">7.5.</span> <span class="toc-text">rm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#log"><span class="toc-number">7.6.</span> <span class="toc-text">log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#global-log"><span class="toc-number">7.7.</span> <span class="toc-text">global-log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find"><span class="toc-number">7.8.</span> <span class="toc-text">find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#status"><span class="toc-number">7.9.</span> <span class="toc-text">status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#checkout"><span class="toc-number">7.10.</span> <span class="toc-text">checkout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#branch"><span class="toc-number">7.11.</span> <span class="toc-text">branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm-branch"><span class="toc-number">7.12.</span> <span class="toc-text">rm-branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reset"><span class="toc-number">7.13.</span> <span class="toc-text">reset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#merge"><span class="toc-number">7.14.</span> <span class="toc-text">merge</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO%EF%BC%9A"><span class="toc-number">8.</span> <span class="toc-text">TODO：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F%E6%95%B4%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">文章格式整理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E6%8C%87%E5%8D%97"><span class="toc-number">10.</span> <span class="toc-text">调试指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91"><span class="toc-number">11.</span> <span class="toc-text">踩过的坑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">12.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yukang-lian.github.io/2022/06/22/Gitlet/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://yukang-lian.github.io/2022/06/22/Gitlet/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yukang-lian.github.io/2022/06/22/Gitlet/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yukang-lian.github.io/2022/06/22/Gitlet/&t="><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2022
+    Yukang-LIAN
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Yukang-LIAN">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
